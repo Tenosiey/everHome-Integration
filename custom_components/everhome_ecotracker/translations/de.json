@@ -1,0 +1,49 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "everHome EcoTracker verbinden",
+        "description": "Gib die IP-Adresse deines EcoTrackers im lokalen Netzwerk ein.\n\nStelle sicher, dass die Option \"Lokaler HTTP-Server\" in der everHome App aktiviert ist (Einstellungen → EcoTracker). Die IP-Adresse des Geräts findest du in der everHome App oder in der Geräteliste deines Routers.",
+        "data": {
+          "host": "IP-Adresse oder Hostname"
+        },
+        "data_description": {
+          "host": "Zum Beispiel 192.168.1.50"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Der EcoTracker konnte nicht erreicht werden. Prüfe die IP-Adresse und ob die Option \"Lokaler HTTP-Server\" in der everHome App aktiviert ist.",
+      "unknown": "Ein unerwarteter Fehler ist aufgetreten. Details findest du im Protokoll."
+    },
+    "abort": {
+      "already_configured": "Dieser EcoTracker ist bereits eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "EcoTracker Optionen",
+        "data": {
+          "scan_interval": "Aktualisierungsintervall (Sekunden)"
+        },
+        "data_description": {
+          "scan_interval": "Wie oft Home Assistant neue Werte vom Gerät abruft."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "power": { "name": "Leistung" },
+      "power_avg": { "name": "Leistung (1-Minuten-Durchschnitt)" },
+      "power_phase1": { "name": "Leistung Phase 1" },
+      "power_phase2": { "name": "Leistung Phase 2" },
+      "power_phase3": { "name": "Leistung Phase 3" },
+      "energy_counter_in": { "name": "Energiebezug" },
+      "energy_counter_in_t1": { "name": "Energiebezug (Hochtarif)" },
+      "energy_counter_in_t2": { "name": "Energiebezug (Niedertarif)" },
+      "energy_counter_out": { "name": "Energieeinspeisung" }
+    }
+  }
+}

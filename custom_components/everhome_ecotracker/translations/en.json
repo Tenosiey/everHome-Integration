@@ -1,0 +1,49 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect your everHome EcoTracker",
+        "description": "Enter the IP address of your EcoTracker on your local network.\n\nMake sure the \"Local HTTP server\" option is enabled in the everHome app (Settings → EcoTracker). You can find the device IP in the everHome app or in your router's device list.",
+        "data": {
+          "host": "IP address or hostname"
+        },
+        "data_description": {
+          "host": "For example 192.168.1.50"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the EcoTracker. Check the IP address and that the \"Local HTTP server\" option is enabled in the everHome app.",
+      "unknown": "An unexpected error occurred. Check the logs for details."
+    },
+    "abort": {
+      "already_configured": "This EcoTracker is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "EcoTracker options",
+        "data": {
+          "scan_interval": "Update interval (seconds)"
+        },
+        "data_description": {
+          "scan_interval": "How often Home Assistant reads new values from the device."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "power": { "name": "Power" },
+      "power_avg": { "name": "Power (1 min average)" },
+      "power_phase1": { "name": "Power phase 1" },
+      "power_phase2": { "name": "Power phase 2" },
+      "power_phase3": { "name": "Power phase 3" },
+      "energy_counter_in": { "name": "Energy import" },
+      "energy_counter_in_t1": { "name": "Energy import (tariff 1)" },
+      "energy_counter_in_t2": { "name": "Energy import (tariff 2)" },
+      "energy_counter_out": { "name": "Energy export" }
+    }
+  }
+}
