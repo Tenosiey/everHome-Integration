@@ -84,7 +84,7 @@ server* option is enabled in the everHome app.
 ### Changing the update interval
 
 Go to **Settings → Devices & Services → everHome EcoTracker → Configure** to
-change how often the device is polled (default: every 10 seconds).
+change how often the device is polled (default: every 1 second).
 
 ## Energy Dashboard
 

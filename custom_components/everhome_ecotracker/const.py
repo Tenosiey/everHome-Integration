@@ -19,7 +19,7 @@ API_PATH: Final = "/v1/json"
 
 # How often we poll the device. The EcoTracker updates frequently, so a short
 # interval gives near real-time power readings without hammering the device.
-DEFAULT_SCAN_INTERVAL: Final = 10
+DEFAULT_SCAN_INTERVAL: Final = 1
 MIN_SCAN_INTERVAL: Final = 1
 MAX_SCAN_INTERVAL: Final = 300
 DEFAULT_UPDATE_INTERVAL: Final = timedelta(seconds=DEFAULT_SCAN_INTERVAL)

@@ -39,6 +39,10 @@ class EcoTrackerConfigFlow(ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
 
+    def __init__(self) -> None:
+        """Initialize the flow and remember the validated host between steps."""
+        self._host: str | None = None
+
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
@@ -62,15 +66,39 @@ class EcoTrackerConfigFlow(ConfigFlow, domain=DOMAIN):
                 await self.async_set_unique_id(client.host)
                 self._abort_if_unique_id_configured()
 
-                return self.async_create_entry(
-                    title=DEFAULT_NAME,
-                    data={CONF_HOST: client.host},
-                )
+                # Remember the host and continue to the update-interval step.
+                self._host = client.host
+                return await self.async_step_options()
 
         return self.async_show_form(
             step_id="user",
             data_schema=vol.Schema({vol.Required(CONF_HOST): str}),
             errors=errors,
+        )
+
+    async def async_step_options(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """Second onboarding step: choose how often the device is polled."""
+        if user_input is not None:
+            return self.async_create_entry(
+                title=DEFAULT_NAME,
+                data={CONF_HOST: self._host},
+                options={CONF_SCAN_INTERVAL: user_input[CONF_SCAN_INTERVAL]},
+            )
+
+        return self.async_show_form(
+            step_id="options",
+            data_schema=vol.Schema(
+                {
+                    vol.Required(
+                        CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL
+                    ): vol.All(
+                        vol.Coerce(int),
+                        vol.Range(min=MIN_SCAN_INTERVAL, max=MAX_SCAN_INTERVAL),
+                    )
+                }
+            ),
         )
 
     @staticmethod

@@ -10,6 +10,16 @@
         "data_description": {
           "host": "For example 192.168.1.50"
         }
+      },
+      "options": {
+        "title": "Update interval",
+        "description": "Choose how often Home Assistant reads new values from the EcoTracker. You can change this later under the integration's options.",
+        "data": {
+          "scan_interval": "Update interval (seconds)"
+        },
+        "data_description": {
+          "scan_interval": "Lower values give more real-time readings but poll the device more often."
+        }
       }
     },
     "error": {

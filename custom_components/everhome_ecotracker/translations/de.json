@@ -10,6 +10,16 @@
         "data_description": {
           "host": "Zum Beispiel 192.168.1.50"
         }
+      },
+      "options": {
+        "title": "Aktualisierungsintervall",
+        "description": "Lege fest, wie oft Home Assistant neue Werte vom EcoTracker abruft. Du kannst dies später in den Optionen der Integration ändern.",
+        "data": {
+          "scan_interval": "Aktualisierungsintervall (Sekunden)"
+        },
+        "data_description": {
+          "scan_interval": "Niedrigere Werte liefern Werte in Echtzeit, fragen das Gerät aber häufiger ab."
+        }
       }
     },
     "error": {
